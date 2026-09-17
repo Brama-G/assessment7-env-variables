@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/<your-username>/project5-env-variables.git'
+                    url: 'https://github.com/Brama-G/assessment7-env-variables.git'
             }
         }
 
@@ -22,14 +22,14 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'python -m py_compile exam_system.py'
+                sh 'python3 -m py_compile exam_system.py'
                 echo "${env.APP_NAME} version ${env.APP_VERSION} compiled successfully."
             }
         }
 
         stage('Version Check') {
             steps {
-                bat 'python version_check.py'
+                sh 'python3 version_check.py'
             }
         }
     }
